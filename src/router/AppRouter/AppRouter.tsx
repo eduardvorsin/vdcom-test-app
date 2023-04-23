@@ -19,6 +19,8 @@ import { isAuth } from '../../helpers/authorization';
 export type ContactsDeletePathName = '/contacts/:clientId/delete';
 export type ContactsChangePathName = '/contacts/:clientId/change';
 
+export const basename = process.env.NODE_ENV === 'development' ? '' : '/vdcom-test-app';
+
 const router = createBrowserRouter(
   [
     {
@@ -64,9 +66,11 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: process.env.NODE_ENV === 'development' ? '/' : '/vdcom-test-app',
+    basename,
   },
 );
+
+console.log('router', router);
 
 const AppRouter = () => (
   <RouterProvider router={router} />

@@ -13,6 +13,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ContactDialog from '../ContactDialog/ContactDialog';
 import useAppSelector from '../../hooks/useAppSelector/useAppSelector';
 import ContactsTable from '../ContactsTable/ContactsTable';
+import { basename } from '../../router/AppRouter/AppRouter';
 
 const Contacts = () => {
   const [addContactModalOpen, setAddContactModalOpen] = useState(false);
@@ -40,7 +41,7 @@ const Contacts = () => {
 
     fetcher.submit(null, {
       method: 'post',
-      action: actionPath,
+      action: `${basename}${actionPath}`,
     });
 
     navigate(actionPath);
