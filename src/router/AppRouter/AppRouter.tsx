@@ -64,7 +64,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: process.env.NODE_ENV === 'development' ? '/' : '/vdcom-test-app',
+    basename: process.env.NODE_ENV === 'development' ? '' : 'vdcom-test-app',
   },
 );
 
