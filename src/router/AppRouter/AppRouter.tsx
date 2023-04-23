@@ -63,6 +63,9 @@ const router = createBrowserRouter(
       errorElement: <LoginPage />,
     },
   ],
+  {
+    basename: process.env.NODE_ENV === 'development' ? '/' : '/vdcom-test-app',
+  },
 );
 
 const AppRouter = () => (
