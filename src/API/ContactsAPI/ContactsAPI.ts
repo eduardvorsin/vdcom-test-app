@@ -3,7 +3,7 @@ import { fakeDelay } from '../../helpers/helpers';
 import { IContact, ContactWithoutId } from '../../models/IContact';
 
 export default class ContactsAPI {
-  static async fetchData(token: string) {
+  static async fetchData(token: string): Promise<Response> {
     await fakeDelay(400);
 
     const response = new Response(JSON.stringify({
@@ -17,7 +17,7 @@ export default class ContactsAPI {
     return response;
   }
 
-  static async removeData(token: string, id: number) {
+  static async removeData(token: string, id: number): Promise<Response> {
     await fakeDelay(400);
 
     const response = new Response(JSON.stringify({
@@ -31,7 +31,7 @@ export default class ContactsAPI {
     return response;
   }
 
-  static async addData(token: string, data: ContactWithoutId) {
+  static async addData(token: string, data: ContactWithoutId): Promise<Response> {
     await fakeDelay(400);
 
     const response = new Response(JSON.stringify({
@@ -45,7 +45,7 @@ export default class ContactsAPI {
     return response;
   }
 
-  static async updateData(token: string, data: IContact) {
+  static async updateData(token: string, data: IContact): Promise<Response> {
     await fakeDelay(400);
 
     const response = new Response(JSON.stringify({
