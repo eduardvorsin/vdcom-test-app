@@ -17,6 +17,13 @@ type ContactFormAction = {
   payload: string,
 };
 
+const FormInner = styled(Box)(() => ({
+  display: 'grid',
+  gridTemplateColumns: '1fr',
+  gridAutoRows: 'min-content',
+  gap: '20px',
+  padding: '10px 0px',
+}));
 const formStateReducer = (state: ContactWithoutIdFormState, action: ContactFormAction) => {
   switch (action.type) {
     case 'clientName':
@@ -145,15 +152,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       onSubmit={submitValidationHandler}
       noValidate
     >
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gridAutoRows: 'min-content',
-          gap: '20px',
-          padding: '10px 0px',
-        }}
-      >
+      <FormInner>
         <TextField
           value={formState.clientName}
           required
@@ -238,7 +237,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         >
           To accept
         </Button>
-      </Box>
+      </FormInner>
     </Form>
   );
 };
