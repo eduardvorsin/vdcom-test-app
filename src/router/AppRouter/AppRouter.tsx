@@ -70,8 +70,6 @@ const router = createBrowserRouter(
   },
 );
 
-console.log('router', router);
-
 const AppRouter = () => (
   <RouterProvider router={router} />
 );
