@@ -24,7 +24,7 @@ const Contacts = () => {
     status,
     error,
   } = useAppSelector((state) => state.contact);
-  const fetcher = useFetcher();
+
   const navigate = useNavigate();
 
   const handleAddContactOpen = () => setAddContactModalOpen(true);
@@ -35,21 +35,10 @@ const Contacts = () => {
   };
   const handleUpdateContactClose = () => setUpdateContactModalOpen(false);
 
-  const handleDeleteContact = async (id: number) => {
-    const actionPath = `/contacts/${id}/delete`;
-
-    fetcher.submit(null, {
-      method: 'post',
-      action: `${basename}${actionPath}`,
-    });
-
-    navigate(actionPath);
-  };
-
   const MemoContactsTable = useMemo(() => (
     <ContactsTable
       rows={data}
-      onDelete={handleDeleteContact}
+      onDelete={() => { }}
       onEdit={handleUpdateContactOpen}
     />
   ), [data]);
