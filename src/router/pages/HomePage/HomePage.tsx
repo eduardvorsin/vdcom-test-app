@@ -3,8 +3,8 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import {
   Box,
 } from '@mui/material';
-import Navigation from '../../../components/Navigation/Navigation';
-import Header from '../../../components/Header/Header';
+import Navigation from '../../../components/UI/Navigation/Navigation';
+import Header from '../../../components/UI/Header/Header';
 import useScreenWidth from '../../../hooks/useScreenWidth/useScreenWidth';
 
 const drawerWidth = 226;

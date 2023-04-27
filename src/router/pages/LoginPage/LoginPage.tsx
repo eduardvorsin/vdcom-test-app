@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
-import Login from '../../../components/Login/Login';
-import Logo from '../../../components/Logo/Logo';
+import Login from '../../../components/UI/Login/Login';
+import Logo from '../../../components/UI/Logo/Logo';
 
 const LoginPage = () => (
   <Container
