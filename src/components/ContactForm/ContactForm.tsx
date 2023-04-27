@@ -112,7 +112,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
   return (
     <Form
       method='post'
-      action={`${actionType}`}
+      action={actionType}
       onSubmit={submitValidationHandler}
       noValidate
     >
