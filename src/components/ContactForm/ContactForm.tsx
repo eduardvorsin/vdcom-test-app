@@ -6,6 +6,7 @@ import { getCurrentValidationMessage, isEmpty } from '../../helpers/validation';
 
 // eslint-disable-next-line max-len
 type ContactFormElements = HTMLFormControlsCollection & Record<keyof ContactWithoutId, HTMLInputElement>;
+
 type ContactWithoutIdFormState = Record<keyof ContactWithoutId, string>;
 type ContactFormProps = {
   actionType: 'add' | 'change',
@@ -24,51 +25,18 @@ const FormInner = styled(Box)(() => ({
   gap: '20px',
   padding: '10px 0px',
 }));
+
 const formStateReducer = (state: ContactWithoutIdFormState, action: ContactFormAction) => {
-  switch (action.type) {
-    case 'clientName':
-      return {
-        ...state,
-        clientName: action.payload,
-      };
-    case 'TRN/PPSN':
-      return {
-        ...state,
-        'TRN/PPSN': action.payload,
-      };
-    case 'yearEnd':
-      return {
-        ...state,
-        yearEnd: action.payload,
-      };
-    case 'ARD':
-      return {
-        ...state,
-        ARD: action.payload,
-      };
-    case 'companyNumber':
-      return {
-        ...state,
-        companyNumber: action.payload,
-      };
-    case 'email':
-      return {
-        ...state,
-        email: action.payload,
-      };
-    case 'phoneNumber':
-      return {
-        ...state,
-        phoneNumber: action.payload,
-      };
-    case 'companyAdress':
-      return {
-        ...state,
-        companyAdress: action.payload,
-      };
-    default:
-      return state;
+  const unknowAction = Object.keys(state).every((type) => type !== action.type);
+
+  if (unknowAction) {
+    return state;
   }
+
+  return {
+    ...state,
+    [action.type]: action.payload,
+  };
 };
 
 const ContactForm: React.FC<ContactFormProps> = ({
