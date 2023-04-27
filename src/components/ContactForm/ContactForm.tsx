@@ -181,9 +181,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
           onChange={changeHandler}
           name='phoneNumber'
           label='Phone Number'
-          inputProps={{
-            pattern: '^[0-9]{10}$',
-          }}
         />
         <TextField
           value={formState.companyAdress}
