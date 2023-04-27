@@ -25,6 +25,7 @@ const Login = () => {
           </Alert>
         </Fade>
       )}
+
       <LoginForm />
     </>
   );
