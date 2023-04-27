@@ -67,9 +67,10 @@ const ContactForm: React.FC<ContactFormProps> = ({
   );
 
   const submitValidationHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
-    const formData = new FormData(e.currentTarget);
     const formElements = e.currentTarget.elements as ContactFormElements;
-    const formFields = [...formData.keys()] as (keyof ContactWithoutId)[];
+    const formFields = [...new FormData(e.currentTarget).keys()] as (keyof ContactWithoutId)[];
+
+    const errors = [] as string[];
 
     formFields.forEach((field) => {
       const currentErrorMessage = getCurrentValidationMessage(formElements[field]);
@@ -79,12 +80,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
           type: field,
           payload: currentErrorMessage,
         });
+        errors.push(currentErrorMessage);
       }
     });
 
-    const hasErrors = Object.values(formErrorState).some((value) => value !== '');
-
-    if (hasErrors) {
+    if (errors.length > 0) {
       e.preventDefault();
       return;
     }
@@ -94,16 +94,17 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
   const changeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, value } = e.target;
+    const type = name as keyof ContactWithoutId;
 
     dispatchFormState({
-      type: name as keyof ContactWithoutId,
+      type,
       payload: value,
     });
 
     const currentErrorMessage = getCurrentValidationMessage(e.target);
 
     dispatchFormErrorState({
-      type: name as keyof ContactWithoutId,
+      type,
       payload: currentErrorMessage,
     });
   };
