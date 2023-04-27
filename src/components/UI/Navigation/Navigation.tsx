@@ -15,11 +15,11 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import Logo from '../Logo/Logo';
-import RouterNavLink from '../RouterNavLink/RouterNavLink';
-import useAppDispatch from '../../hooks/useAppDispatch/useAppDispatch';
-import { removeToken } from '../../helpers/authorization';
-import { logoutUser } from '../../store/slices/userSlice/userSlice';
-import useScreenWidth from '../../hooks/useScreenWidth/useScreenWidth';
+import RouterNavLink from '../../RouterNavLink/RouterNavLink';
+import useAppDispatch from '../../../hooks/useAppDispatch/useAppDispatch';
+import { removeToken } from '../../../helpers/authorization';
+import { logoutUser } from '../../../store/slices/userSlice/userSlice';
+import useScreenWidth from '../../../hooks/useScreenWidth/useScreenWidth';
 
 type NavigationProps = {
   drawerWidth: number,
@@ -78,8 +78,15 @@ const StyledNavLink = styled(Link)(() => ({
 
 const IconWrapper = styled(Box)(() => ({
   display: 'inline-block',
-  mr: '10px',
+  marginRight: '10px',
   lineHeight: '1',
+}));
+
+const StyledList = styled(List)(() => ({
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '0',
 }));
 
 const StyledListItem = styled(ListItem)(() => ({
@@ -93,6 +100,12 @@ const StyledListItem = styled(ListItem)(() => ({
       marginBottom: '65px',
     },
   },
+  '&:last-child': {
+    marginTop: 'auto',
+    padding: '18px 24px',
+    display: 'flex',
+    borderTop: '1px solid #EAEAEA',
+  },
 }));
 
 const StyledLink = styled(Link)(() => ({
@@ -102,6 +115,14 @@ const StyledLink = styled(Link)(() => ({
   '&:hover': {
     color: '#666666',
     transition: 'color 0.15s ease',
+  },
+}));
+
+const StyledDrawer = styled(Drawer)(() => ({
+  '.MuiPaper-root': {
+    width: '100%',
+    padding: '15px 0px 0px',
+    border: 'none',
   },
 }));
 
@@ -133,110 +154,100 @@ const Navigation: React.FC<NavigationProps> = ({
   const isMobileWidth = screenWidth < 900;
 
   return (
-    <Box
+    <StyledDrawer
+      open={open}
+      variant={`${isMobileWidth ? 'temporary' : 'persistent'}`}
+      anchor='left'
+      onClose={onNavigationClose}
+      sx={{
+        width: `${drawerWidth}px`,
+        '.MuiPaper-root': {
+          maxWidth: `${drawerWidth}px`,
+        },
+      }}
     >
-      <Drawer
-        open={open}
-        variant={`${isMobileWidth ? 'temporary' : 'persistent'}`}
-        anchor='left'
-        onClose={onNavigationClose}
+      <DrawerHeader>
+        {!isMobileWidth && (
+          <Logo />
+        )}
+
+        {isMobileWidth && (
+          <IconButton
+            onClick={onNavigationClose}
+          >
+            <ChevronLeftIcon />
+          </IconButton>
+        )}
+      </DrawerHeader>
+
+      <Box
+        component={'nav'}
         sx={{
-          width: `${drawerWidth}px`,
-          '.MuiPaper-root': {
-            maxWidth: `${drawerWidth}px`,
-            width: '100%',
-            padding: '15px 0px 0px',
-            border: 'none',
-          },
+          height: '100%',
         }}
       >
-        <DrawerHeader>
-          {!isMobileWidth && (
-            <Logo />
-          )}
-
-          {isMobileWidth && (
-            <IconButton
-              onClick={onNavigationClose}
+        <StyledList>
+          <StyledListItem>
+            <StyledNavLink
+              component={RouterNavLink}
+              to='/contacts'
             >
-              <ChevronLeftIcon />
-            </IconButton>
-          )}
-        </DrawerHeader>
-
-        <Box
-          component={'nav'}
-        >
-          <List>
-            <StyledListItem>
-              <StyledNavLink
-                component={RouterNavLink}
-                to='/contacts'
+              <IconWrapper
+                component={'span'}
               >
-                <IconWrapper
-                  component={'span'}
-                >
-                  <ContactsIcon />
-                </IconWrapper>
+                <ContactsIcon />
+              </IconWrapper>
 
-                Total Contacts
-              </StyledNavLink>
-            </StyledListItem>
-            <StyledListItem>
-              <StyledNavLink
-                component={RouterNavLink}
-                to='/calendar'
-              >
-                <IconWrapper
-                  component={'span'}
-                >
-                  <DateRangeIcon />
-                </IconWrapper>
-
-                Calendar
-              </StyledNavLink>
-            </StyledListItem>
-            <StyledListItem>
-              <StyledNavLink
-                component={RouterNavLink}
-                to='/project-report'
-              >
-                <IconWrapper
-                  component={'span'}
-                >
-                  <DataUsageIcon />
-                </IconWrapper>
-
-                Project Report
-              </StyledNavLink>
-            </StyledListItem>
-          </List>
-        </Box>
-
-        <Box
-          sx={{
-            mt: 'auto',
-            padding: '18px 24px',
-            display: 'flex',
-            borderTop: '1px solid #EAEAEA',
-          }}
-        >
-          <StyledLink
-            to='/login'
-            onClick={handleLogout}
-            component={ReactRouterLink}
-          >
-            <IconWrapper
-              component={'span'}
+              Total Contacts
+            </StyledNavLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledNavLink
+              component={RouterNavLink}
+              to='/calendar'
             >
-              <LogoutIcon />
-            </IconWrapper>
+              <IconWrapper
+                component={'span'}
+              >
+                <DateRangeIcon />
+              </IconWrapper>
 
-            Log out
-          </StyledLink>
-        </Box>
-      </Drawer>
-    </Box>
+              Calendar
+            </StyledNavLink>
+          </StyledListItem>
+          <StyledListItem>
+            <StyledNavLink
+              component={RouterNavLink}
+              to='/project-report'
+            >
+              <IconWrapper
+                component={'span'}
+              >
+                <DataUsageIcon />
+              </IconWrapper>
+
+              Project Report
+            </StyledNavLink>
+          </StyledListItem>
+
+          <StyledListItem>
+            <StyledLink
+              to='/login'
+              onClick={handleLogout}
+              component={ReactRouterLink}
+            >
+              <IconWrapper
+                component={'span'}
+              >
+                <LogoutIcon />
+              </IconWrapper>
+
+              Log out
+            </StyledLink>
+          </StyledListItem>
+        </StyledList>
+      </Box>
+    </StyledDrawer>
   );
 };
 
