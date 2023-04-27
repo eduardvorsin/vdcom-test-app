@@ -39,36 +39,31 @@ const formStateReducer = (state: ContactWithoutIdFormState, action: ContactFormA
   };
 };
 
+const initializeEmptyFormState = (): ContactWithoutIdFormState => ({
+  clientName: '',
+  'TRN/PPSN': '',
+  yearEnd: '',
+  ARD: '',
+  companyNumber: '',
+  email: '',
+  phoneNumber: '',
+  companyAdress: '',
+});
+
 const ContactForm: React.FC<ContactFormProps> = ({
   actionType,
   onSubmit,
 }) => {
-  const [formState, dispatchFormState] = useReducer<typeof formStateReducer>(
+  const [formState, dispatchFormState] = useReducer<typeof formStateReducer, null>(
     formStateReducer,
-    {
-      clientName: '',
-      'TRN/PPSN': '',
-      yearEnd: '',
-      ARD: '',
-      companyNumber: '',
-      email: '',
-      phoneNumber: '',
-      companyAdress: '',
-    },
+    null,
+    initializeEmptyFormState,
   );
 
-  const [formErrorState, dispatchFormErrorState] = useReducer<typeof formStateReducer>(
+  const [formErrorState, dispatchFormErrorState] = useReducer<typeof formStateReducer, null>(
     formStateReducer,
-    {
-      clientName: '',
-      'TRN/PPSN': '',
-      yearEnd: '',
-      ARD: '',
-      companyNumber: '',
-      email: '',
-      phoneNumber: '',
-      companyAdress: '',
-    },
+    null,
+    initializeEmptyFormState,
   );
 
   const submitValidationHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
