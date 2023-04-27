@@ -98,19 +98,7 @@ const Contacts = () => {
 
       <Box>
         {status === 'loading' && (
-          <Box
-            sx={{
-              display: 'block',
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-            }}
-          >
-            <CircularProgress
-              size={200}
-            />
-          </Box>
+          <Spinner size={200} />
         )}
 
         {status === 'resolved' && (
