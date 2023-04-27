@@ -6,7 +6,7 @@ import {
   styled,
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import Logotype from '../../assets/images/icons/logo.svg?url';
+import Logotype from '../../../assets/images/icons/logo.svg?url';
 
 type LogoProps = {
   sx?: SxProps<Theme>,
@@ -34,12 +34,12 @@ const Logo: React.FC<LogoProps> = ({
   sx,
 }) => (
   <Link
+    to='/contacts'
+    component={RouterLink}
     sx={{
       display: 'inline-flex',
       ...sx,
     }}
-    to='/contacts'
-    component={RouterLink}
   >
     <StyledLogo
       src={Logotype}
