@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
-import { Button, TextField, Box, styled } from '@mui/material';
+import {
+  Button,
+  TextField,
+  Box,
+  styled,
+} from '@mui/material';
 import { Form } from 'react-router-dom';
-import { UserWithoutToken } from '../../models/IUser';
-import { getCurrentValidationMessage, isEmpty } from '../../helpers/validation';
+import { UserWithoutToken } from '../../../models/IUser';
+import { getCurrentValidationMessage, isEmpty } from '../../../helpers/validation';
 
-interface LoginFormElements extends HTMLFormControlsCollection {
-  username: HTMLInputElement,
-  password: HTMLInputElement,
-}
+const LoginFormInner = styled(Box)(() => ({
+  display: 'grid',
+  gridTemplateColumns: '1fr',
+  gridAutoRows: 'min-content',
+  gap: '20px',
+  maxWidth: { xs: '430px', md: '580px' },
+  margin: '0 auto',
+}));
 
 const LoginTextField = styled(TextField)(({ theme }) => ({
   '.MuiInputBase-input': {
@@ -65,6 +74,9 @@ const LoginButton = styled(Button)(({ theme }) => ({
   },
 }));
 
+// eslint-disable-next-line max-len
+type LoginFormElements = HTMLFormControlsCollection & Record<keyof UserWithoutToken, HTMLInputElement>;
+
 const LoginForm = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -85,23 +97,21 @@ const LoginForm = () => {
   };
 
   const submitValidationHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
-    const formData = new FormData(e.currentTarget);
     const formElements = e.currentTarget.elements as LoginFormElements;
-    const formEntries = [...formData.entries()] as [keyof UserWithoutToken, string][];
+    const formFields = [...new FormData(e.currentTarget).keys()] as (keyof UserWithoutToken)[];
 
-    const currentErrors = formEntries.reduce<UserWithoutToken>((loginErrors, loginFormEntries) => {
-      const errorMessage = getCurrentValidationMessage(formElements[loginFormEntries[0]]);
+    const errors = {} as Record<keyof UserWithoutToken, string>;
 
-      return {
-        ...loginErrors,
-        [loginFormEntries[0]]: errorMessage,
-      };
-    }, {} as UserWithoutToken);
+    formFields.forEach((field) => {
+      const currentErrorMessage = getCurrentValidationMessage(formElements[field]);
 
-    setUsernameError(currentErrors.username);
-    setPasswordError(currentErrors.password);
+      errors[field] = currentErrorMessage;
+    });
 
-    if (currentErrors.username !== '' || currentErrors.password !== '') {
+    setUsernameError(errors.username);
+    setPasswordError(errors.password);
+
+    if (errors.username !== '' || errors.password !== '') {
       e.preventDefault();
     }
   };
@@ -113,16 +123,7 @@ const LoginForm = () => {
       onSubmit={submitValidationHandler}
       noValidate
     >
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gridAutoRows: 'min-content',
-          gap: '20px',
-          maxWidth: { xs: '430px', md: '580px' },
-          margin: '0 auto',
-        }}
-      >
+      <LoginFormInner >
         <Box>
           <LoginTextField
             required
@@ -177,7 +178,7 @@ const LoginForm = () => {
             Sign in
           </LoginButton>
         </Box>
-      </Box>
+      </LoginFormInner>
     </Form>
   );
 };
