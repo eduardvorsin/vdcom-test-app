@@ -1,19 +1,40 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { useFetcher, useNavigate } from 'react-router-dom';
+import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Alert,
   AlertTitle,
   Box,
   Button,
-  CircularProgress,
   Fade,
   Typography,
+  styled,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import ContactDialog from '../ContactDialog/ContactDialog';
 import useAppSelector from '../../hooks/useAppSelector/useAppSelector';
 import ContactsTable from '../ContactsTable/ContactsTable';
-import { basename } from '../../router/AppRouter/AppRouter';
+import Spinner from '../UI/Spinner/Spinner';
+
+const ContactsHeader = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: '0px',
+  flexWrap: 'wrap',
+  '& > :first-child, & > :last-child': {
+    marginBottom: '20px',
+  },
+  [theme.breakpoints.up('sm')]: {
+    flexWrap: 'no-wrap',
+    marginBottom: '30px',
+    '& > :first-child, & > :last-child': {
+      marginBottom: '0px',
+    },
+  },
+  [theme.breakpoints.up('md')]: {
+    marginBottom: '40px',
+  },
+}));
 
 const Contacts = () => {
   const [addContactModalOpen, setAddContactModalOpen] = useState(false);
@@ -45,22 +66,13 @@ const Contacts = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          mb: '40px',
-        }}
-      >
+      <ContactsHeader>
         <Typography
-          align='center'
           variant='h3'
           component='h1'
           sx={{
             fontSize: '32px',
             mr: '30px',
-            textAlign: 'left',
           }}
         >
           Total Contacts
@@ -75,7 +87,7 @@ const Contacts = () => {
             <AddIcon />
           </Button>
         )}
-      </Box>
+      </ContactsHeader>
 
       {
         status === 'rejected' && (
