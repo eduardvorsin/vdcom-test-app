@@ -4,17 +4,8 @@ import { Form, useFetcher } from 'react-router-dom';
 import { ContactWithoutId } from '../../models/IContact';
 import { getCurrentValidationMessage, isEmpty } from '../../helpers/validation';
 
-interface ContactFormElements extends HTMLFormControlsCollection {
-  clientName: HTMLInputElement,
-  'TRN/PPSN': HTMLInputElement,
-  yearEnd: HTMLInputElement,
-  ARD: HTMLInputElement,
-  companyNumber: HTMLInputElement,
-  email: HTMLInputElement,
-  phoneNumber: HTMLInputElement,
-  companyAdress: HTMLInputElement
-}
-
+// eslint-disable-next-line max-len
+type ContactFormElements = HTMLFormControlsCollection & Record<keyof ContactWithoutId, HTMLInputElement>;
 type ContactWithoutIdFormState = Record<keyof ContactWithoutId, string>;
 type ContactFormProps = {
   actionType: 'add' | 'change',
