@@ -27,13 +27,12 @@ const Contacts = () => {
   const fetcher = useFetcher();
   const navigate = useNavigate();
 
-  const handleAddContactOpen = useCallback(() => setAddContactModalOpen(true), []);
+  const handleAddContactOpen = () => setAddContactModalOpen(true);
   const handleAddContactClose = () => setAddContactModalOpen(false);
   const handleUpdateContactOpen = (id: number) => {
     navigate(`/contacts/${id}`);
     setUpdateContactModalOpen(true);
   };
-
   const handleUpdateContactClose = () => setUpdateContactModalOpen(false);
 
   const handleDeleteContact = async (id: number) => {
