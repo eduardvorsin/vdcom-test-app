@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Box,
   CssBaseline,
   ThemeProvider,
   createTheme,
@@ -199,10 +200,16 @@ theme = createTheme(theme, {
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className='app'>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
+        }}
+      >
         <CssBaseline enableColorScheme />
         <AppRouter />
-      </div>
+      </Box>
     </ThemeProvider>
   );
 }
