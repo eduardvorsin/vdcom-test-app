@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import { Box, Button, TextField, styled } from '@mui/material';
-import { Form } from 'react-router-dom';
+import { Form, useSubmit } from 'react-router-dom';
 import { ContactWithoutId } from '../../models/IContact';
 import { getCurrentValidationMessage, isEmpty } from '../../helpers/validation';
 
@@ -66,7 +66,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
     initializeEmptyFormState,
   );
 
+  const submit = useSubmit();
+
   const submitValidationHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
     const formElements = e.currentTarget.elements as ContactFormElements;
     const formFields = [...new FormData(e.currentTarget).keys()] as (keyof ContactWithoutId)[];
 
@@ -84,12 +88,10 @@ const ContactForm: React.FC<ContactFormProps> = ({
       }
     });
 
-    if (errors.length > 0) {
-      e.preventDefault();
-      return;
+    if (errors.length < 1) {
+      submit(e.currentTarget, { replace: true });
+      onSubmit(e);
     }
-
-    onSubmit(e);
   };
 
   const changeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
