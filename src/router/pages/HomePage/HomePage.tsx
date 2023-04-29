@@ -58,6 +58,7 @@ const HomePage = () => {
           marginLeft: `${leftMargin}px`,
           transition: 'margin-left 0.3s ease',
           backgroundColor: '#EEEAE7',
+          flexGrow: '1',
         }}
       >
         <Outlet />
