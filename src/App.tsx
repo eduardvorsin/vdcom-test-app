@@ -14,6 +14,18 @@ let theme = createTheme();
 theme = createTheme(theme, {
   typography: {
     fontFamily: 'Poppins',
+    h1: {
+      fontSize: '38px',
+      [theme.breakpoints.up('sm')]: {
+        fontSize: '46px',
+      },
+      [theme.breakpoints.up('md')]: {
+        fontSize: '64px',
+      },
+      [theme.breakpoints.up('lg')]: {
+        fontSize: '96px',
+      },
+    },
     h3: {
       fontSize: '26px',
       [theme.breakpoints.up('sm')]: {
