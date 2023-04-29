@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
+import { Alert, AlertTitle } from '@mui/material';
 import HomePage from '../pages/HomePage/HomePage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
@@ -27,10 +28,19 @@ const router = createBrowserRouter(
       path: '/',
       loader: async () => (!isAuth() ? redirect('/login') : null),
       element: <HomePage />,
-      errorElement: (
-        <NotFoundPage />
-      ),
+      errorElement: <NotFoundPage />,
       children: [
+        {
+          index: true,
+          element: (
+            <Alert
+              severity='warning'>
+              <AlertTitle>
+                The data table could not be loaded, try reloading the page
+              </AlertTitle>
+            </Alert>
+          ),
+        },
         {
           path: 'contacts',
           loader: contactsLoader,
