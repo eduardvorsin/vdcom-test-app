@@ -9,6 +9,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import Logotype from '../../../assets/images/icons/logo.svg?url';
 
 type LogoProps = {
+  className?: string,
   sx?: SxProps<Theme>,
 };
 
@@ -32,10 +33,12 @@ const StyledLogo = styled('img')(({ theme }) => ({
 
 const Logo: React.FC<LogoProps> = ({
   sx,
+  className,
 }) => (
   <Link
     to='/contacts'
     component={RouterLink}
+    className={className}
     sx={{
       display: 'inline-flex',
       ...sx,
