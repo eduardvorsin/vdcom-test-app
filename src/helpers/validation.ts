@@ -1,12 +1,11 @@
 export const isEmpty = (value: string) => value.length < 1;
 // eslint-disable-next-line max-len
-export const isRequiredAndEmpty = (target: HTMLInputElement): boolean => target.validity.valueMissing && isEmpty(target.value);
+export const isRequiredAndEmpty = (target: HTMLInputElement): boolean => target.required && isEmpty(target.value);
 export const longerOrEqualThan3 = (value: string) => value.length >= 3;
 export const longerOrEqualThan5 = (value: string) => value.length >= 5;
 export const hasOneOrMoreLowercaseCharachers = (value: string) => value.search(/[a-z]+/) >= 0;
 export const isISODateString = (value: string): boolean => {
   const regexp = /\d{4}(-\d{2}){2}/;
-
   return regexp.test(value) && !Number.isNaN(Date.parse(value));
 };
 export const isEmail = (value: string): boolean => {
