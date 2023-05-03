@@ -1,16 +1,9 @@
+import { IContact } from '../models/IContact';
+
 export type ColumnHeader = {
   id: number,
   text: string,
 }
-
-export const createColumnHeaderData = (headings: string[]): ColumnHeader[] => {
-  const headerList = headings.map((text, index) => ({
-    id: index,
-    text,
-  }));
-
-  return headerList;
-};
 
 export const generateRandomStringFromCharacters = (characters: string[], size: number): string => {
   let result = '';
