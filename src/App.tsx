@@ -216,6 +216,7 @@ export default function App() {
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
+          overflowWrap: 'break-word',
         }}
       >
         <CssBaseline enableColorScheme />
