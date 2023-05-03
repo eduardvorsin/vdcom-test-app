@@ -22,7 +22,7 @@ const StyledTable = styled(Table)(({ theme }) => ({
   borderCollapse: 'separate',
   borderSpacing: '0px 12px',
   tableLayout: 'fixed',
-  width: 'auto',
+  width: '1600px',
   [theme.breakpoints.up('lg')]: {
     width: '100%',
   },
@@ -35,15 +35,12 @@ const StyledTableRow = styled(TableRow)(() => ({
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   fontFamily: 'Poppins',
-  padding: '12px 6px',
+  padding: '10px 6px',
   lineHeight: '1',
-  overflow: 'hidden',
-  whiteSpace: 'nowrap',
-  textOverflow: 'ellipsis',
-  fontSize: '20px',
-  [theme.breakpoints.down('xl')]: {
-    fontSize: '16px',
-  },
+  fontSize: '16px',
+  textAlign: 'center',
+  verticalAlign: 'top',
+  width: '15%',
   '&.MuiTableCell-head': {
     position: 'relative',
     '&:not(:last-child)': {
@@ -60,42 +57,21 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
   },
   [theme.breakpoints.up('xl')]: {
-    padding: '24px 12px',
-
+    verticalAlign: 'middle',
+    fontSize: '18px',
+    padding: '16px 4px 16px 4px',
     '&:first-child': {
-      padding: '24px 12px 24px 9px',
+      padding: '16px 4px 16px 8px',
     },
     '&:last-child': {
-      padding: '24px 9px 24px 12px',
+      padding: '16px 8px 16px 4px',
     },
   },
-  [theme.breakpoints.up('md')]: {
-    '&.MuiTableCell-head:nth-child(1)': {
-      width: '7.37%',
-    },
-    '&.MuiTableCell-head:nth-child(2)': {
-      width: '10.56%',
-    },
-    '&.MuiTableCell-head:nth-child(3)': {
-      width: '8.69%',
-    },
-    '&.MuiTableCell-head:nth-child(4)': {
-      width: '9.41%',
-    },
-    '&.MuiTableCell-head:nth-child(5)': {
-      width: '9.41%',
-    },
-    '&.MuiTableCell-head:nth-child(6)': {
-      width: '12.21%',
-    },
-    '&.MuiTableCell-head:nth-child(7)': {
-      width: '11%',
-    },
-    '&.MuiTableCell-head:nth-child(8)': {
-      width: '11.2%',
-    },
-    '&.MuiTableCell-head:nth-child(9)': {
-      width: '14%',
+  [theme.breakpoints.up('lg')]: {
+    overflowWrap: 'anywhere',
+    width: 'calc((100% - 18%) / 7)',
+    '&.MuiTableCell-head:first-child, &.MuiTableCell-head:nth-child(3), &.MuiTableCell-head:last-child': {
+      width: '7%',
     },
     '&.MuiTableCell-head:nth-child(10)': {
       width: '7.26%',
@@ -195,8 +171,6 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
           {visibleRows.map((row) => (
             <StyledTableRow
               key={row.clientId}
-              sx={{
-              }}
             >
               <StyledTableCell
               >
