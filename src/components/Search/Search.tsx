@@ -2,12 +2,19 @@ import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import {
   Box,
+  FormHelperText,
   IconButton,
   Input,
   SxProps,
   Theme,
   styled,
 } from '@mui/material';
+import { visuallyHiddenStyles } from '../../App';
+import { isEmpty } from '../../helpers/validation';
+
+const SearchForm = styled('form')(() => ({
+  width: '100%',
+}));
 
 const SearchWrapper = styled(Box)(() => ({
   position: 'relative',
@@ -39,6 +46,10 @@ const SearchButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
+const SearchLabel = styled('label')(() => ({
+  ...visuallyHiddenStyles,
+}));
+
 const SearchInput = styled(Input)(({ theme }) => ({
   '&': {
     width: '100%',
@@ -50,19 +61,29 @@ const SearchInput = styled(Input)(({ theme }) => ({
     backgroundColor: '#F2F2F2',
     lineHeight: '1.17',
     height: 'auto',
-    border: '2px solid #F2F2F2',
-    transition: 'border 0.15s ease',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: '#F2F2F2',
+    transition: 'border-color 0.15s ease',
     padding: '8px 8px 8px 39px',
     [theme.breakpoints.up('md')]: {
       padding: '12px 12px 12px 51px',
     },
     '&:focus': {
-      border: '2px solid #797979',
-      transition: 'border 0.15s ease',
+      borderWidth: '2px',
+      borderStyle: 'solid',
+      borderColor: '#797979',
+      transition: 'border-color 0.15s ease',
+    },
+    '&.error:focus': {
+      borderColor: '#d32f2f',
     },
     '&::placeholder': {
       opacity: '1',
       color: '#797979',
+    },
+    '&.error::placeholder': {
+      color: '#d32f2f',
     },
   },
   '&::after, &::before': {
@@ -71,31 +92,49 @@ const SearchInput = styled(Input)(({ theme }) => ({
 }));
 
 type SearchProps = {
+  id: string,
   onChange: React.ChangeEventHandler<HTMLInputElement>,
   value: string,
   sx?: SxProps<Theme>,
 };
 
 const Search: React.FC<SearchProps> = ({
+  id,
   value,
   onChange,
   sx,
-}) => (
-  <SearchWrapper
-    sx={sx}
-  >
-    <SearchButton
-      disableRipple
+  return (
+    <SearchForm
+      sx={sx}
+      noValidate
     >
-      <SearchIcon />
-    </SearchButton>
-    <SearchInput
-      placeholder='Search by Name...'
-      value={value}
-      onChange={onChange}
-    />
-  </SearchWrapper>
-);
+      <SearchWrapper
+        role='search'
+      >
+        <SearchButton
+          type='submit'
+          disableRipple
+        >
+          <SearchIcon />
+        </SearchButton>
+        <SearchLabel
+          htmlFor={id}
+        >
+          Search about documents
+        </SearchLabel>
+        <SearchInput
+          name='search'
+          required
+          id={id}
+          placeholder='Search by Name...'
+          value={value}
+          aria-describedby={`${id}-helper-text`}
+        />
+      </SearchWrapper>
+
+    </SearchForm>
+  );
+};
 
 export default Search;
 
