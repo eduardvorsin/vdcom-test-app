@@ -11,12 +11,15 @@ import {
   TablePagination,
   styled,
   TableFooter,
+  TableSortLabel,
+  Box,
 } from '@mui/material';
-
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Form, useSubmit } from 'react-router-dom';
+import { SortOrder, sortContactsBy } from '../../helpers/helpers';
 import { IContact } from '../../models/IContact';
+import { visuallyHiddenStyles } from '../../App';
 
 const StyledTable = styled(Table)(({ theme }) => ({
   borderCollapse: 'separate',
@@ -73,9 +76,14 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     '&.MuiTableCell-head:first-child, &.MuiTableCell-head:nth-child(3), &.MuiTableCell-head:last-child': {
       width: '7%',
     },
-    '&.MuiTableCell-head:nth-child(10)': {
-      width: '7.26%',
-    },
+  },
+}));
+
+const StyledTableSortLabel = styled(TableSortLabel)(({ theme }) => ({
+  display: 'inline-flex',
+  flexDirection: 'column',
+  [theme.breakpoints.up('xl')]: {
+    flexDirection: 'row',
   },
 }));
 
@@ -135,6 +143,9 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
 }) => {
   const [visibleRows, setVisibleRows] = useState<IContact[]>(rows.slice(0, rowsPerPage));
   const [page, setPage] = useState<number>(0);
+  const submit = useSubmit();
+  const [orderBy, setOrderBy] = useState<keyof IContact>('clientId');
+  const [order, setOrder] = useState<SortOrder>('asc');
 
   const pageChangeHandler = (e: React.MouseEvent<HTMLButtonElement> | null, nextPage: number) => {
     setPage(nextPage);
@@ -145,6 +156,16 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
     );
 
     setVisibleRows(updatedRows);
+  };
+
+  const deleteSubmitHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    // eslint-disable-next-line no-alert
+    const confirmation = window.confirm('Please confirm you want to delete this record.');
+
+    if (confirmation) {
+      submit(e.currentTarget, { replace: true });
+    }
   };
 
   const deleteHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -163,6 +184,14 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
     }
   };
 
+  const sortHandler: React.MouseEventHandler = (e) => {
+    const field = e.currentTarget.id as keyof IContact;
+    const currentOrder = order === 'asc' ? 'desc' : 'asc';
+    setOrderBy(field);
+    setOrder(currentOrder);
+    setVisibleRows(sortContactsBy(rows, field, currentOrder));
+  };
+
   return (
     <TableContainer>
       <StyledTable
@@ -172,12 +201,33 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
             {columnHeaders.map((headerCell) => (
               <StyledTableCell
                 key={headerCell.id}
+                sortDirection={orderBy === headerCell.id ? order : false}
               >
-                {header.text}
+                {headerCell.id !== 'actions' && (
+                  <StyledTableSortLabel
+                    id={headerCell.id}
+                    active={orderBy === headerCell.id}
+                    direction={orderBy === headerCell.id ? order : 'asc'}
+                    onClick={sortHandler}
+                  >
+                    {headerCell.text}
+                    {orderBy === headerCell.id && (
+                      <Box
+                        component='span'
+                        sx={visuallyHiddenStyles}
+                      >
+                        {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                      </Box>
+                    )}
+                  </StyledTableSortLabel>
+                )}
+
+                {headerCell.id === 'actions' && (headerCell.text)}
               </StyledTableCell>
             ))}
           </StyledTableRow>
         </TableHead>
+
         <TableBody>
           {visibleRows.map((row) => (
             <StyledTableRow
