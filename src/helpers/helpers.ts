@@ -36,3 +36,20 @@ export const createToken = (): string => {
 
 // eslint-disable-next-line no-promise-executor-return
 export const fakeDelay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export type SortOrder = 'asc' | 'desc';
+export const sortContactsBy = (array: IContact[], orderBy: keyof IContact, order: SortOrder = 'asc'): IContact[] => {
+  const copiedArray = [...array];
+
+  const comparator = (a: IContact, b: IContact): number => {
+    const firstValue = a[orderBy].toString();
+    const secondValue = b[orderBy].toString();
+
+    if (order === 'desc') {
+      return secondValue.localeCompare(firstValue);
+    }
+    return firstValue.localeCompare(secondValue);
+  };
+
+  return copiedArray.sort(comparator);
+};
