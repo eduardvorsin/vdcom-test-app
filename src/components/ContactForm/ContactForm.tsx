@@ -1,5 +1,10 @@
 import React, { useReducer } from 'react';
-import { Box, Button, TextField, styled } from '@mui/material';
+import {
+  Box,
+  Button,
+  TextField,
+  styled,
+} from '@mui/material';
 import { Form, useSubmit } from 'react-router-dom';
 import { ContactWithoutId } from '../../models/IContact';
 import { getCurrentValidationMessage, isEmpty } from '../../helpers/validation';
@@ -24,6 +29,12 @@ const FormInner = styled(Box)(() => ({
   gridAutoRows: 'min-content',
   gap: '20px',
   padding: '10px 0px',
+}));
+
+const StyledTextField = styled(TextField)(() => ({
+  '& > .MuiFormHelperText-root': {
+    textDecoration: 'line-through',
+  },
 }));
 
 const formStateReducer = (state: ContactWithoutIdFormState, action: ContactFormAction) => {
@@ -119,7 +130,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       noValidate
     >
       <FormInner>
-        <TextField
+        <StyledTextField
           value={formState.clientName}
           required
           error={!isEmpty(formErrorState.clientName)}
@@ -128,7 +139,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           name='clientName'
           label='Client name'
         />
-        <TextField
+        <StyledTextField
           value={formState['TRN/PPSN']}
           required
           error={!isEmpty(formErrorState['TRN/PPSN'])}
@@ -137,7 +148,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           name='TRN/PPSN'
           label='TRN/PPSN'
         />
-        <TextField
+        <StyledTextField
           value={formState.yearEnd}
           required
           error={!isEmpty(formErrorState.yearEnd)}
@@ -146,7 +157,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           name='yearEnd'
           label='Year End'
         />
-        <TextField
+        <StyledTextField
           value={formState.ARD}
           required
           error={!isEmpty(formErrorState.ARD)}
@@ -155,7 +166,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           name='ARD'
           label='ARD'
         />
-        <TextField
+        <StyledTextField
           value={formState.companyNumber}
           required
           error={!isEmpty(formErrorState.companyNumber)}
@@ -164,7 +175,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           name='companyNumber'
           label='Company Number'
         />
-        <TextField
+        <StyledTextField
           value={formState.email}
           type='email'
           required
@@ -174,7 +185,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           name='email'
           label='Email'
         />
-        <TextField
+        <StyledTextField
           value={formState.phoneNumber}
           type='tel'
           required
@@ -184,7 +195,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           name='phoneNumber'
           label='Phone Number'
         />
-        <TextField
+        <StyledTextField
           value={formState.companyAdress}
           required
           error={!isEmpty(formErrorState.companyAdress)}
