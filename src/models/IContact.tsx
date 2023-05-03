@@ -1,5 +1,5 @@
 export interface IContact {
-  clientId: number;
+  clientId: number,
   clientName: string,
   'TRN/PPSN': number,
   yearEnd: string,
@@ -7,7 +7,7 @@ export interface IContact {
   companyNumber: number,
   email: string,
   phoneNumber: string,
-  companyAdress: string
+  companyAdress: string,
 }
 
 export type ContactWithoutId = Omit<IContact, 'clientId'>;
