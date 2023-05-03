@@ -15,7 +15,7 @@ import {
 
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { createColumnHeaderData } from '../../helpers/helpers';
+import { Form, useSubmit } from 'react-router-dom';
 import { IContact } from '../../models/IContact';
 
 const StyledTable = styled(Table)(({ theme }) => ({
@@ -91,20 +91,35 @@ const StyledIconButton = styled(IconButton)(() => ({
   },
 }));
 
-const headers = [
-  'Client ID',
-  'Client name',
-  'TRN/PPSN',
-  'Year end',
-  'ARD',
-  'Company number',
-  'Email',
-  'Phone number',
-  'Company adress',
-  'Actions',
-];
+const TableActions = styled(ButtonGroup)(({ theme }) => ({
+  '& > .MuiButtonBase-root:first-child': {
+    color: '#EDBC4A',
+    mr: '15px',
+  },
+  [theme.breakpoints.between('lg', 'xl')]: {
+    flexDirection: 'column',
+    '& > .MuiButtonBase-root:first-child': {
+      mr: '0',
+      mb: '10px',
+    },
+  },
+  '& svg': {
+    pointerEvents: 'none',
+  },
+}));
 
-const columnHeaders = createColumnHeaderData(headers);
+const columnHeaders = [
+  { id: 'clientId', text: 'Client ID' },
+  { id: 'clientName', text: 'Client name' },
+  { id: 'TRN/PPSN', text: 'TRN/PPSN' },
+  { id: 'yearEnd', text: 'Year end' },
+  { id: 'ARD', text: 'ARD' },
+  { id: 'companyNumber', text: 'Company number' },
+  { id: 'email', text: 'Email' },
+  { id: 'phoneNumber', text: 'Phone number' },
+  { id: 'companyAdress', text: 'Company adress' },
+  { id: 'actions', text: 'Actions' },
+];
 
 const rowsPerPage = 9;
 
@@ -149,18 +164,14 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
   };
 
   return (
-    <TableContainer
-      sx={{
-        overflowX: 'auto',
-      }}
-    >
+    <TableContainer>
       <StyledTable
       >
         <TableHead>
           <StyledTableRow>
-            {columnHeaders.map((header) => (
+            {columnHeaders.map((headerCell) => (
               <StyledTableCell
-                key={header.id}
+                key={headerCell.id}
               >
                 {header.text}
               </StyledTableCell>
@@ -210,44 +221,30 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
               </StyledTableCell>
               <StyledTableCell
               >
-                <ButtonGroup
+                <TableActions
                   id={row.clientId.toString()}
-                  sx={{
-                    '& > .MuiButtonBase-root:first-child': {
-                      mr: '15px',
-                    },
-                    '@media (min-width:1200px) and (max-width:1536px)': {
-                      flexDirection: 'column',
-                      '& > .MuiButtonBase-root:first-child': {
-                        mr: '0',
-                        mb: '10px',
-                      },
-                    },
-                  }}
                 >
                   <StyledIconButton
                     onClick={editHandler}
-                    sx={{
-                      color: '#EDBC4A',
-                    }}
                   >
-                    <EditIcon
-                      sx={{
-                        pointerEvents: 'none',
-                      }}
-                    />
+                    <EditIcon />
                   </StyledIconButton>
-                  <StyledIconButton
-                    onClick={deleteHandler}
-                    color='error'
+
+                  <Form
+                    method='post'
+                    action={`${row.clientId}/delete`}
+                    onSubmit={deleteSubmitHandler}
                   >
-                    <DeleteIcon
-                      sx={{
-                        pointerEvents: 'none',
-                      }}
-                    />
-                  </StyledIconButton>
-                </ButtonGroup>
+                    <StyledIconButton
+                      type='submit'
+                      color='error'
+                      onClick={deleteHandler}
+                    >
+                      <DeleteIcon />
+                    </StyledIconButton>
+                  </Form>
+
+                </TableActions>
               </StyledTableCell>
             </StyledTableRow>
           ))}
@@ -273,7 +270,6 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
         </TableFooter>
       </StyledTable>
     </TableContainer>
-
   );
 };
 
