@@ -107,7 +107,7 @@ const Profile: React.FC<ProfileProps> = ({
 
   useEffect(() => {
     const mouseDownHander = (e: MouseEvent): void => {
-      if (!menuRef.current?.contains(e.target as Node)) {
+      if (isMobileWidth && !menuRef.current?.contains(e.target as Node)) {
         setOpen(false);
       }
     };
