@@ -230,6 +230,7 @@ module.exports = {
   devtool: isDevelopment ? 'inline-source-map' : 'source-map',
 
   devServer: {
+    historyApiFallback: true,
     hot: isDevelopment,
     compress: true,
     open: true,
