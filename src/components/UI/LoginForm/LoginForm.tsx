@@ -51,6 +51,9 @@ const LoginTextField = styled(TextField)(({ theme }) => ({
       fontSize: '26px',
     },
   },
+  '& > .MuiFormHelperText-root': {
+    textDecoration: 'line-through',
+  },
 }));
 
 const LoginButton = styled(Button)(({ theme }) => ({
