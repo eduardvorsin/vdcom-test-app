@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import {
   Box,
@@ -18,7 +18,6 @@ const SearchForm = styled('form')(() => ({
 
 const SearchWrapper = styled(Box)(() => ({
   position: 'relative',
-  width: '100%',
 }));
 
 const SearchButton = styled(IconButton)(({ theme }) => ({
@@ -91,6 +90,10 @@ const SearchInput = styled(Input)(({ theme }) => ({
   },
 }));
 
+type SearchFormElements = HTMLFormControlsCollection & {
+  search: HTMLInputElement,
+}
+
 type SearchProps = {
   id: string,
   onChange: React.ChangeEventHandler<HTMLInputElement>,
@@ -103,9 +106,36 @@ const Search: React.FC<SearchProps> = ({
   value,
   onChange,
   sx,
+}) => {
+  const [error, setError] = useState<string>('');
+  const searchChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (isEmpty(e.currentTarget.value)) {
+      setError('before sending, you need to fill in the search field');
+    } else {
+      setError('');
+    }
+
+    onChange(e);
+  };
+
+  const searchSubmitHandler: React.FocusEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
+    const searchFormElements = e.currentTarget.elements as SearchFormElements;
+
+    if (isEmpty(searchFormElements.search.value)) {
+      setError('before sending, you need to fill in the search field');
+      searchFormElements.search.focus();
+    } else {
+      setError('');
+      e.currentTarget.submit();
+    }
+  };
+
   return (
     <SearchForm
       sx={sx}
+      onSubmit={searchSubmitHandler}
       noValidate
     >
       <SearchWrapper
@@ -123,19 +153,35 @@ const Search: React.FC<SearchProps> = ({
           Search about documents
         </SearchLabel>
         <SearchInput
+          inputProps={{
+            className: `${error === '' ? '' : 'error'}`,
+          }}
           name='search'
           required
+          error={error !== ''}
           id={id}
           placeholder='Search by Name...'
           value={value}
+          onChange={searchChangeHandler}
           aria-describedby={`${id}-helper-text`}
         />
       </SearchWrapper>
 
+      {error && (
+        <FormHelperText
+          error
+          id={`${id}-helper-text`}
+          sx={{
+            textDecoration: 'line-through',
+            fontFamily: 'Roboto Condensed',
+            fontSize: '18px',
+          }}
+        >
+          {error}
+        </FormHelperText>
+      )}
     </SearchForm>
   );
 };
 
 export default Search;
-
-
