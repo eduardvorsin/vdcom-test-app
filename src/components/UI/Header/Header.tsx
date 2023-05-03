@@ -81,6 +81,7 @@ const Header: React.FC<HeaderProps> = ({
         />
 
         <Search
+          id='main-search'
           value={searchValue}
           onChange={searchChangeHandler}
           sx={{
