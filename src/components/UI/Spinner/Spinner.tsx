@@ -18,13 +18,13 @@ const SpinnerWrapper = styled(Box)(() => ({
 type SpinnerProps = {
   className?: string,
   sx?: SxProps<Theme>,
-  size: number,
+  size?: number,
 }
 
 const Spinner: FC<SpinnerProps> = ({
   className,
   sx,
-  size,
+  size = 60,
 }) => (
   <SpinnerWrapper
     className={className}
