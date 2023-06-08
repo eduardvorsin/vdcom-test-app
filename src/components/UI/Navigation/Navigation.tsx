@@ -17,7 +17,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import RouterNavLink from '../../RouterNavLink/RouterNavLink';
 import useAppDispatch from '../../../hooks/useAppDispatch/useAppDispatch';
-import { removeToken } from '../../../helpers/authorization';
+import { removeToken } from '../../../utils/authorization/authorization';
 import { logoutUser } from '../../../store/slices/userSlice/userSlice';
 import useScreenWidth from '../../../hooks/useScreenWidth/useScreenWidth';
 
