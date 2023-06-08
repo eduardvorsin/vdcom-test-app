@@ -35,7 +35,14 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
+    <Box
+      data-testid='home-page'
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <Header
         onMenuButtonClick={handleNavigationOpen}
         sx={{
@@ -63,7 +70,7 @@ const HomePage = () => {
       >
         <Outlet />
       </Box >
-    </>
+    </Box >
   );
 };
 
