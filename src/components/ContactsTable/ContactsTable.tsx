@@ -170,19 +170,15 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
   };
 
   const deleteHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    const contactId = e.currentTarget.parentElement?.id;
-
-    if (contactId) {
-      onDelete(+contactId);
+    const contactId = +e.currentTarget.id;
+    if (onDelete) {
+      onDelete(contactId);
     }
   };
 
   const editHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    const contactId = e.currentTarget.parentElement?.id;
-
-    if (contactId) {
-      onEdit(+contactId);
-    }
+    const contactId = +e.currentTarget.id;
+    onEdit(contactId);
   };
 
   const sortHandler: React.MouseEventHandler = (e) => {
