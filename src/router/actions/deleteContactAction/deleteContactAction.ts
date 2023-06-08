@@ -14,7 +14,6 @@ const deleteContactAction = async ({ params }: DeleteContactActionArgs): Promise
   const contactId = Number(params.clientId);
   const token = getToken();
 
-  //! возможно await здесь лишний
   if (token) {
     store.dispatch(deleteContact({
       id: contactId,
