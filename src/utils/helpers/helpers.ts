@@ -1,4 +1,4 @@
-import { IContact } from '../models/IContact';
+import { IContact } from '../../models/IContact';
 
 export type ColumnHeader = {
   id: number,
@@ -6,6 +6,22 @@ export type ColumnHeader = {
 }
 
 export const generateRandomStringFromCharacters = (characters: string[], size: number): string => {
+  if (!Array.isArray(characters)) {
+    throw new Error('the characters argument must be an array');
+  }
+
+  if (characters.length < 1) {
+    throw new Error('the size of the characters array must be greater than 0');
+  }
+
+  if (typeof size !== 'number') {
+    throw new Error('the size argument must be a number');
+  }
+
+  if (size < 1) {
+    throw new Error('the value of the size argument must be greater than 0');
+  }
+
   let result = '';
   let currentIndex = 0;
 
@@ -34,11 +50,32 @@ export const createToken = (): string => {
   return result.join('.');
 };
 
-// eslint-disable-next-line no-promise-executor-return
-export const fakeDelay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+export const fakeDelay = (ms: number): Promise<unknown> => {
+  if (typeof ms !== 'number') {
+    throw new Error('the value of the ms argument must be a number');
+  }
+
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};
 
 export type SortOrder = 'asc' | 'desc';
 export const sortContactsBy = (array: IContact[], orderBy: keyof IContact, order: SortOrder = 'asc'): IContact[] => {
+  if (!Array.isArray(array)) {
+    throw new Error('the first argument must be an array');
+  }
+
+  if (array.length === 0) return [];
+
+  if (typeof orderBy !== 'string') {
+    throw new Error('the orderBy argument must be a string');
+  }
+
+  if (order !== 'asc' && order !== 'desc') {
+    throw new Error('The order argument can take only one of two values: asc, desc');
+  }
+
   const copiedArray = [...array];
 
   const comparator = (a: IContact, b: IContact): number => {
