@@ -6,7 +6,7 @@ import deleteContact from '../../thunks/deleteContact/deleteContact';
 import addContact from '../../thunks/addContact/addContact';
 import changeContact from '../../thunks/changeContact/changeContact';
 
-type ContactState = {
+export type ContactState = {
   status: 'resolved' | 'rejected' | 'loading' | null,
   error: string | null,
   data: [] | IContact[],
