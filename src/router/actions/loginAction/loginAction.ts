@@ -2,17 +2,17 @@ import {
   ActionFunctionArgs,
   redirect,
 } from 'react-router-dom';
-import AuthAPI from '../../API/AuthAPI/AuthAPI';
-import { loginUser } from '../../store/slices/userSlice/userSlice';
-import store from '../../store/store';
-import { setToken } from '../../helpers/authorization';
-import { UserWithoutToken } from '../../models/IUser';
+import AuthAPI from '../../../API/AuthAPI/AuthAPI';
+import { loginUser } from '../../../store/slices/userSlice/userSlice';
+import store from '../../../store/store';
+import { setToken } from '../../../utils/authorization/authorization';
+import { UserWithoutToken } from '../../../models/IUser';
 
 interface loginActionArgs extends ActionFunctionArgs {
   request: Request,
 }
 
-const loginAction = async ({ request }: loginActionArgs) => {
+const loginAction = async ({ request }: loginActionArgs): Promise<Response | Error> => {
   const authFormData = await request.formData();
 
   const authData = {

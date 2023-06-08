@@ -1,16 +1,16 @@
 import {
   ActionFunctionArgs, redirect,
 } from 'react-router-dom';
-import { ContactWithoutId } from '../../models/IContact';
-import store from '../../store/store';
-import { getToken } from '../../helpers/authorization';
-import addContact from '../../store/thunks/addContact/addContact';
+import { ContactWithoutId } from '../../../models/IContact';
+import store from '../../../store/store';
+import { getToken } from '../../../utils/authorization/authorization';
+import addContact from '../../../store/thunks/addContact/addContact';
 
 interface addContactActionArgs extends ActionFunctionArgs {
   request: Request,
 }
 
-const addContactAction = async ({ request }: addContactActionArgs) => {
+const addContactAction = async ({ request }: addContactActionArgs): Promise<Response> => {
   const contactFormData = await request.formData();
   const contactData = {
     clientName: contactFormData.get('clientName'),
@@ -26,7 +26,7 @@ const addContactAction = async ({ request }: addContactActionArgs) => {
   const token = getToken();
 
   if (token) {
-    await store.dispatch(addContact({
+    store.dispatch(addContact({
       data: contactData,
       token,
     }));

@@ -1,18 +1,19 @@
 import {
   ActionFunctionArgs, ParamParseKey, Params, redirect,
 } from 'react-router-dom';
-import { IContact } from '../../models/IContact';
-import store from '../../store/store';
-import { getToken } from '../../helpers/authorization';
-import changeContact from '../../store/thunks/changeContact/changeContact';
-import { ContactsChangePathName } from '../AppRouter/AppRouter';
+import { IContact } from '../../../models/IContact';
+import store from '../../../store/store';
+import { getToken } from '../../../utils/authorization/authorization';
+import changeContact from '../../../store/thunks/changeContact/changeContact';
+import { ContactsChangePathName } from '../../AppRouter/AppRouter';
 
 interface changeContactActionArgs extends ActionFunctionArgs {
   params: Params<ParamParseKey<ContactsChangePathName>>,
   request: Request,
 }
 
-const changeContactAction = async ({ params, request }: changeContactActionArgs) => {
+// eslint-disable-next-line max-len
+const changeContactAction = async ({ params, request }: changeContactActionArgs): Promise<Response> => {
   const contactFormData = await request.formData();
 
   const contactData = {
@@ -30,7 +31,7 @@ const changeContactAction = async ({ params, request }: changeContactActionArgs)
   const token = getToken();
 
   if (token) {
-    await store.dispatch(changeContact({
+    store.dispatch(changeContact({
       data: contactData,
       token,
     }));
