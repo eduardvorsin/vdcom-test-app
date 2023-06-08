@@ -95,6 +95,7 @@ const Header: React.FC<HeaderProps> = ({
           name='Mr. Director'
           role='Managing Director'
           src={ProfileImg}
+          alt='Mr. Director avatar'
         />
       </AppBarInner>
     </StyledAppBar>
