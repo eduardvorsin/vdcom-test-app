@@ -125,6 +125,7 @@ const LoginForm = () => {
       action='/login'
       onSubmit={submitValidationHandler}
       noValidate
+      data-testid='login-form'
     >
       <LoginFormInner >
         <Box>

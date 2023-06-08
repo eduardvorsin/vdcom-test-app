@@ -65,7 +65,9 @@ const Contacts = () => {
   ), [data]);
 
   return (
-    <>
+    <Box
+      data-testid='contacts'
+    >
       <ContactsHeader>
         <Typography
           variant='h3'
@@ -77,6 +79,7 @@ const Contacts = () => {
         >
           Total Contacts
         </Typography>
+
         {status === 'resolved' && (
           <Button
             disableRipple
@@ -133,7 +136,7 @@ const Contacts = () => {
         open={updateContactModalOpen}
         onClose={handleUpdateContactClose}
       />
-    </>
+    </Box>
   );
 };
 

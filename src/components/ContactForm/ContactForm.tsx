@@ -128,6 +128,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       action={actionType}
       onSubmit={submitValidationHandler}
       noValidate
+      data-testid='contact-form'
     >
       <FormInner>
         <StyledTextField

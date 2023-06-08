@@ -29,6 +29,7 @@ const Spinner: FC<SpinnerProps> = ({
   <SpinnerWrapper
     className={className}
     sx={sx}
+    data-testid='spinner'
   >
     <CircularProgress
       size={size}

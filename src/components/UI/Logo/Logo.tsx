@@ -36,6 +36,7 @@ const Logo: React.FC<LogoProps> = ({
   className,
 }) => (
   <Link
+    data-testid='logo-link'
     to='/contacts'
     component={RouterLink}
     className={className}

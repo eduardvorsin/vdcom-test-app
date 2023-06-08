@@ -128,6 +128,7 @@ const Profile: React.FC<ProfileProps> = ({
       ref={menuRef}
       sx={sx}
       className={className}
+      data-testid='profile'
     >
       <ProfileAvatar
         src={src}

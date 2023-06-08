@@ -137,6 +137,7 @@ const Search: React.FC<SearchProps> = ({
       sx={sx}
       onSubmit={searchSubmitHandler}
       noValidate
+      data-testid='search-form'
     >
       <SearchWrapper
         role='search'

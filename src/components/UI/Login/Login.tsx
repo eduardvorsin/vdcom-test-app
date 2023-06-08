@@ -8,7 +8,7 @@ const Login = () => {
   const error = actionError instanceof Error ? actionError : '';
 
   return (
-    <>
+    <Box data-testid='login'>
       {error && (
         <Fade
           in={Boolean(error)}
@@ -27,7 +27,7 @@ const Login = () => {
       )}
 
       <LoginForm />
-    </>
+    </Box>
   );
 };
 

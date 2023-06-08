@@ -80,7 +80,9 @@ const NotFoundText = styled(Typography)(({ theme }) => ({
 }));
 
 const NotFoundPage = () => (
-  <NotFoundWrapper>
+  <NotFoundWrapper
+    data-testid='not-found-page'
+  >
     <NotFoundIcon />
 
     <NotFoundTitle

@@ -190,9 +190,10 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
   };
 
   return (
-    <TableContainer>
-      <StyledTable
-      >
+    <TableContainer
+      data-testid='table'
+    >
+      <StyledTable>
         <TableHead>
           <StyledTableRow>
             {columnHeaders.map((headerCell) => (

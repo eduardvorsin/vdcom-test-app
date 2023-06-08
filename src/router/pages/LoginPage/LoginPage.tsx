@@ -58,6 +58,7 @@ const LoginTitle = styled(Typography)(({ theme }) => ({
 const LoginPage = () => (
   <Container
     maxWidth='xl'
+    data-testid='login-page'
   >
     <LoginWrapper>
       <LoginLogo />

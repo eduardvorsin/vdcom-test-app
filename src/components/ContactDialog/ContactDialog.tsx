@@ -28,6 +28,7 @@ const ContactDialog: React.FC<ContactDialogProps> = ({
       open={open}
       onClose={onClose}
       fullWidth
+      data-testid='contact-dialog'
     >
       <DialogTitle
         component={'h2'}

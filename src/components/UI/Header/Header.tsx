@@ -62,6 +62,7 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <StyledAppBar
+      data-testid='header'
       sx={sx}
     >
       <AppBarInner

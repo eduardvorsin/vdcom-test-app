@@ -159,6 +159,7 @@ const Navigation: React.FC<NavigationProps> = ({
       variant={`${isMobileWidth ? 'temporary' : 'persistent'}`}
       anchor='left'
       onClose={onNavigationClose}
+      data-testid='navigation'
       sx={{
         width: `${drawerWidth}px`,
         '.MuiPaper-root': {
