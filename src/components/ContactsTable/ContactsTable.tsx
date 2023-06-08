@@ -134,8 +134,8 @@ const rowsPerPage = 9;
 
 type ContactsTableProps = {
   onEdit: (id: number) => void,
-  onDelete: (id: number) => void,
-  rows: IContact[],
+  onDelete?: (id: number) => void,
+  rows: IContact[] | [],
 }
 const ContactsTable: React.FC<ContactsTableProps> = ({
   onEdit,
