@@ -274,6 +274,7 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
                     onClick={editHandler}
                   >
                     <EditIcon />
+                    edit contact
                   </StyledIconButton>
 
                   <Form
@@ -288,6 +289,7 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
                       onClick={deleteHandler}
                     >
                       <DeleteIcon />
+                      delete contact
                     </StyledIconButton>
                   </Form>
 
