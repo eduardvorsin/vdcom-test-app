@@ -9,11 +9,11 @@ import { Alert, AlertTitle } from '@mui/material';
 import HomePage from '../pages/HomePage/HomePage';
 import LoginPage from '../pages/LoginPage/LoginPage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
-import loginAction from '../actions/loginAction';
-import addContactAction from '../actions/addContactAction';
+import loginAction from '../actions/loginAction/loginAction';
+import addContactAction from '../actions/addContactAction/addContactAction';
 import contactsLoader from '../loaders/contactsLoader';
-import changeContactAction from '../actions/changeContactAction';
-import deleteContactAction from '../actions/deleteContactAction';
+import changeContactAction from '../actions/changeContactAction/changeContactAction';
+import deleteContactAction from '../actions/deleteContactAction/deleteContactAction';
 import Contacts from '../../components/Contacts/Contacts';
 import { isAuth } from '../../helpers/authorization';
 
