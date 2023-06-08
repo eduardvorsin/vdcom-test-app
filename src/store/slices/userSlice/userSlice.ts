@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUser } from '../../../models/IUser';
 /* eslint-disable no-param-reassign */
 
-type UserState = {
+export type UserState = {
   username: string | null,
   password: string | null,
   token: string
