@@ -6,6 +6,8 @@ export default class ContactsAPI {
   static async fetchData(token: string): Promise<Response> {
     await fakeDelay(400);
 
+    if (!token) return Response.error();
+
     const response = new Response(JSON.stringify({
       data: contacts,
     }), {
@@ -19,6 +21,8 @@ export default class ContactsAPI {
 
   static async removeData(token: string, id: number): Promise<Response> {
     await fakeDelay(400);
+
+    if (!token || !id) return Response.error();
 
     const response = new Response(JSON.stringify({
       data: id,
@@ -34,6 +38,8 @@ export default class ContactsAPI {
   static async addData(token: string, data: ContactWithoutId): Promise<Response> {
     await fakeDelay(400);
 
+    if (!token || !data) return Response.error();
+
     const response = new Response(JSON.stringify({
       data,
     }), {
@@ -47,6 +53,8 @@ export default class ContactsAPI {
 
   static async updateData(token: string, data: IContact): Promise<Response> {
     await fakeDelay(400);
+
+    if (!token || !data) return Response.error();
 
     const response = new Response(JSON.stringify({
       data,
