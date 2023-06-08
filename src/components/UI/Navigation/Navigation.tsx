@@ -21,12 +21,6 @@ import { removeToken } from '../../../utils/authorization/authorization';
 import { logoutUser } from '../../../store/slices/userSlice/userSlice';
 import useScreenWidth from '../../../hooks/useScreenWidth/useScreenWidth';
 
-type NavigationProps = {
-  drawerWidth: number,
-  open: boolean,
-  onNavigationClose: React.MouseEventHandler<HTMLButtonElement>,
-}
-
 const LinkBaseStyles = {
   display: 'inline-flex',
   alignItems: 'center',
@@ -137,6 +131,12 @@ const DrawerHeader = styled(Box)(({ theme }) => ({
     marginBottom: '43px',
   },
 }));
+
+type NavigationProps = {
+  drawerWidth: number,
+  open: boolean,
+  onNavigationClose: React.MouseEventHandler<HTMLButtonElement>,
+}
 
 const Navigation: React.FC<NavigationProps> = ({
   drawerWidth,
