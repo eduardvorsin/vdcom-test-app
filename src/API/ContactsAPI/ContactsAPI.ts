@@ -1,5 +1,5 @@
 import contacts from '../../data/fakeData';
-import { fakeDelay } from '../../helpers/helpers';
+import { fakeDelay } from '../../utils/helpers/helpers';
 import { IContact, ContactWithoutId } from '../../models/IContact';
 
 export default class ContactsAPI {
