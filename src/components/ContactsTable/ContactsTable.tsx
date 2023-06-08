@@ -17,7 +17,7 @@ import {
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Form, useSubmit } from 'react-router-dom';
-import { SortOrder, sortContactsBy } from '../../helpers/helpers';
+import { SortOrder, sortContactsBy } from '../../utils/helpers/helpers';
 import { IContact } from '../../models/IContact';
 import { visuallyHiddenStyles } from '../../App';
 
