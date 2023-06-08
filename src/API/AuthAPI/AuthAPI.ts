@@ -1,4 +1,4 @@
-import { createToken } from '../../helpers/helpers';
+import { createToken } from '../../utils/helpers/helpers';
 import { UserWithoutToken } from '../../models/IUser';
 
 type AuthTokenData = {
