@@ -1,7 +1,7 @@
 import { createToken } from '../../utils/helpers/helpers';
 import { UserWithoutToken } from '../../models/IUser';
 
-type AuthTokenData = {
+export type AuthTokenData = {
   token: string,
 };
 
