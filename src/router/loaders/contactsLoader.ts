@@ -2,7 +2,7 @@ import {
   redirect,
 } from 'react-router-dom';
 import store from '../../store/store';
-import { getToken, isAuth } from '../../helpers/authorization';
+import { getToken, isAuth } from '../../utils/authorization/authorization';
 import fetchContacts from '../../store/thunks/fetchContacts/fetchContacts';
 
 const contactsLoader = async () => {
