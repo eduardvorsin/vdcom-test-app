@@ -175,6 +175,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <IconButton
             onClick={onNavigationClose}
           >
+            close navigation
             <ChevronLeftIcon />
           </IconButton>
         )}
