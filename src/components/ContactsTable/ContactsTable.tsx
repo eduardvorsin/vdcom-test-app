@@ -268,10 +268,9 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
               </StyledTableCell>
               <StyledTableCell
               >
-                <TableActions
-                  id={row.clientId.toString()}
-                >
+                <TableActions>
                   <StyledIconButton
+                    id={row.clientId.toString()}
                     onClick={editHandler}
                   >
                     <EditIcon />
@@ -283,6 +282,7 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
                     onSubmit={deleteSubmitHandler}
                   >
                     <StyledIconButton
+                      id={row.clientId.toString()}
                       type='submit'
                       color='error'
                       onClick={deleteHandler}
