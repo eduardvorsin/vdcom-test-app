@@ -5,7 +5,7 @@ import store from '../../store/store';
 import { getToken, isAuth } from '../../utils/authorization/authorization';
 import fetchContacts from '../../store/thunks/fetchContacts/fetchContacts';
 
-const contactsLoader = async () => {
+const contactsLoader = async (): Promise<Response | null> => {
   if (!isAuth()) return redirect('/login');
   const token = getToken();
 
