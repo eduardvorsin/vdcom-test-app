@@ -15,7 +15,7 @@ import contactsLoader from '../loaders/contactsLoader';
 import changeContactAction from '../actions/changeContactAction/changeContactAction';
 import deleteContactAction from '../actions/deleteContactAction/deleteContactAction';
 import Contacts from '../../components/Contacts/Contacts';
-import { isAuth } from '../../helpers/authorization';
+import { isAuth } from '../../utils/authorization/authorization';
 
 export type ContactsDeletePathName = '/contacts/:clientId/delete';
 export type ContactsChangePathName = '/contacts/:clientId/change';
