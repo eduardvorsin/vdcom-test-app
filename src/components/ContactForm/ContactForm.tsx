@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { Form, useSubmit } from 'react-router-dom';
 import { ContactWithoutId } from '../../models/IContact';
-import { getCurrentValidationMessage, isEmpty } from '../../helpers/validation';
+import { getCurrentValidationMessage, isEmpty } from '../../utils/validation/validation';
 
 // eslint-disable-next-line max-len
 type ContactFormElements = HTMLFormControlsCollection & Record<keyof ContactWithoutId, HTMLInputElement>;
