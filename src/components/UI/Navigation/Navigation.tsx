@@ -27,7 +27,7 @@ const LinkBaseStyles = {
   cursor: 'pointer',
   color: '#32302c',
   textDecoration: 'none',
-  fontSize: '20px',
+  fontSize: '18px',
   lineHeight: '1.5',
   width: '100%',
 } as const;
