@@ -46,7 +46,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   width: '15%',
   '&.MuiTableCell-head': {
     position: 'relative',
-    '&:not(:last-child)': {
+    '&:not(:last-of-type)': {
       '&::after': {
         content: '""',
         height: '25px',
@@ -63,17 +63,17 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     verticalAlign: 'middle',
     fontSize: '18px',
     padding: '16px 4px 16px 4px',
-    '&:first-child': {
+    '&:first-of-type': {
       padding: '16px 4px 16px 8px',
     },
-    '&:last-child': {
+    '&:last-of-type': {
       padding: '16px 8px 16px 4px',
     },
   },
   [theme.breakpoints.up('lg')]: {
     overflowWrap: 'anywhere',
     width: 'calc((100% - 18%) / 7)',
-    '&.MuiTableCell-head:first-child, &.MuiTableCell-head:nth-child(3), &.MuiTableCell-head:last-child': {
+    '&.MuiTableCell-head:first-of-type, &.MuiTableCell-head:nth-of-child(3), &.MuiTableCell-head:last-of-type': {
       width: '7%',
     },
   },
@@ -92,6 +92,7 @@ const StyledIconButton = styled(IconButton)(() => ({
     width: '30px',
     height: '30px',
     padding: '5px',
+    fontSize: '0px',
   },
   '& > svg': {
     width: '100%',
@@ -100,13 +101,13 @@ const StyledIconButton = styled(IconButton)(() => ({
 }));
 
 const TableActions = styled(ButtonGroup)(({ theme }) => ({
-  '& > .MuiButtonBase-root:first-child': {
+  '& > .MuiButtonBase-root:first-of-type': {
     color: '#EDBC4A',
     mr: '15px',
   },
   [theme.breakpoints.between('lg', 'xl')]: {
     flexDirection: 'column',
-    '& > .MuiButtonBase-root:first-child': {
+    '& > .MuiButtonBase-root:first-of-type': {
       mr: '0',
       mb: '10px',
     },
