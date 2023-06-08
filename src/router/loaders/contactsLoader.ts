@@ -10,9 +10,7 @@ const contactsLoader = async (): Promise<Response | null> => {
   const token = getToken();
 
   if (token) {
-    store.dispatch(fetchContacts(
-      token,
-    ));
+    store.dispatch(fetchContacts(token));
   }
 
   return null;
