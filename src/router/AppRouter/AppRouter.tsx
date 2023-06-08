@@ -22,59 +22,61 @@ export type ContactsChangePathName = '/contacts/:clientId/change';
 
 export const basename = process.env.NODE_ENV === 'development' ? '' : '/vdcom-test-app';
 
+export const routes = [
+  {
+    path: '/',
+    loader: async () => (!isAuth() ? redirect('/login') : null),
+    element: <HomePage />,
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        index: true,
+        element: (
+          <Alert
+            severity='warning'>
+            <AlertTitle>
+              The data table could not be loaded, try reloading the page
+            </AlertTitle>
+          </Alert>
+        ),
+      },
+      {
+        path: 'contacts',
+        loader: contactsLoader,
+        element: <Contacts />,
+      },
+      {
+        path: 'contacts/add',
+        element: <Contacts />,
+        action: addContactAction,
+      },
+      {
+        path: 'contacts/:clientId',
+        element: <Contacts />,
+        index: true,
+      },
+      {
+        path: 'contacts/:clientId/change',
+        element: <Contacts />,
+        action: changeContactAction,
+      },
+      {
+        path: 'contacts/:clientId/delete',
+        element: <Contacts />,
+        action: deleteContactAction,
+      },
+    ],
+  },
+  {
+    path: '/login',
+    action: loginAction,
+    element: <LoginPage />,
+    errorElement: <LoginPage />,
+  },
+];
+
 const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      loader: async () => (!isAuth() ? redirect('/login') : null),
-      element: <HomePage />,
-      errorElement: <NotFoundPage />,
-      children: [
-        {
-          index: true,
-          element: (
-            <Alert
-              severity='warning'>
-              <AlertTitle>
-                The data table could not be loaded, try reloading the page
-              </AlertTitle>
-            </Alert>
-          ),
-        },
-        {
-          path: 'contacts',
-          loader: contactsLoader,
-          element: <Contacts />,
-        },
-        {
-          path: 'contacts/add',
-          element: <Contacts />,
-          action: addContactAction,
-        },
-        {
-          path: 'contacts/:clientId',
-          element: <Contacts />,
-          index: true,
-        },
-        {
-          path: 'contacts/:clientId/change',
-          element: <Contacts />,
-          action: changeContactAction,
-        },
-        {
-          path: 'contacts/:clientId/delete',
-          element: <Contacts />,
-          action: deleteContactAction,
-        },
-      ],
-    },
-    {
-      path: '/login',
-      action: loginAction,
-      element: <LoginPage />,
-      errorElement: <LoginPage />,
-    },
-  ],
+  routes,
   {
     basename,
   },
