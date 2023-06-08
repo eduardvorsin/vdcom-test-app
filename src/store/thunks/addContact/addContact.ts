@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createId } from '../../../helpers/helpers';
+import { createId } from '../../../utils/helpers/helpers';
 import { ContactWithoutId } from '../../../models/IContact';
 import ContactsAPI from '../../../API/ContactsAPI/ContactsAPI';
 import { createContact } from '../../slices/contactSlice/contactSlice';
