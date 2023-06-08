@@ -6,7 +6,7 @@ import { getToken, isAuth } from '../../utils/authorization/authorization';
 import fetchContacts from '../../store/thunks/fetchContacts/fetchContacts';
 
 const contactsLoader = async () => {
-  if (!isAuth()) redirect('/login');
+  if (!isAuth()) return redirect('/login');
   const token = getToken();
 
   if (token) {
