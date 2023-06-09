@@ -85,13 +85,17 @@ type ProfileProps = {
   name: string,
   role: string,
   src: string,
+  className?: string,
   sx?: SxProps<Theme>,
+  alt: string,
 }
 
 const Profile: React.FC<ProfileProps> = ({
+  className,
   name,
   role,
   src,
+  alt,
   sx,
 }) => {
   const screenWidth = useScreenWidth();
@@ -123,9 +127,11 @@ const Profile: React.FC<ProfileProps> = ({
     <ProfileWrapper
       ref={menuRef}
       sx={sx}
+      className={className}
     >
       <ProfileAvatar
         src={src}
+        alt={alt}
         onClick={clickHander}
       >
         {name[0]}
