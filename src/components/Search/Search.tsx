@@ -10,7 +10,7 @@ import {
   styled,
 } from '@mui/material';
 import { visuallyHiddenStyles } from '../../App';
-import { isEmpty } from '../../helpers/validation';
+import { isEmpty } from '../../utils/validation/validation';
 
 const SearchForm = styled('form')(() => ({
   width: '100%',
