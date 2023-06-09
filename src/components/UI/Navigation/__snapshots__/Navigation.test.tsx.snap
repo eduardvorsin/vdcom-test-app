@@ -335,6 +335,7 @@ exports[`Navigation tests is a basic snapshot with a width of more than 900 pixe
     >
       <a
         class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-h74647-MuiTypography-root-MuiLink-root"
+        data-testid="logo-link"
         href="/contacts"
       >
         <img

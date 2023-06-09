@@ -10,6 +10,7 @@ exports[`LoginPage tests is a basic snapshot 1`] = `
   >
     <a
       class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cg55gr-MuiTypography-root-MuiLink-root"
+      data-testid="logo-link"
       href="/contacts"
     >
       <img

@@ -31,6 +31,7 @@ exports[`Header tests is a basic snapshot 1`] = `
     </button>
     <a
       class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-112rk81-MuiTypography-root-MuiLink-root"
+      data-testid="logo-link"
       href="/contacts"
     >
       <img
@@ -91,6 +92,7 @@ exports[`Header tests is a basic snapshot 1`] = `
     </form>
     <div
       class="MuiBox-root css-ro3nde"
+      data-testid="profile"
     >
       <div
         class="MuiAvatar-root MuiAvatar-circular css-quq592-MuiAvatar-root"
