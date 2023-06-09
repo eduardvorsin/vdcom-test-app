@@ -50,7 +50,7 @@ const ProfileContent = styled(Box)(({ theme }) => ({
   backgroundColor: '#ddd5cf',
   position: 'absolute',
   top: 'calc(100% + 25px)',
-  maxWidth: '130px',
+  maxWidth: '150px',
   padding: '10px',
   transition: 'transform 0.15s ease, opacity 0.15s ease',
   opacity: '0',
