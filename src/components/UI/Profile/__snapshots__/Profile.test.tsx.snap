@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile tests is a basic snapshot 1`] = `
+<div
+  class="MuiBox-root css-ro3nde"
+  data-testid="profile"
+>
+  <div
+    class="MuiAvatar-root MuiAvatar-circular css-quq592-MuiAvatar-root"
+  >
+    <img
+      alt="Adam Richards avatar"
+      class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+      src="assets"
+    />
+  </div>
+  <div
+    class=" MuiBox-root css-yi99sy"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-14tr2nh-MuiTypography-root"
+    >
+      Adam Richards
+    </p>
+    <p
+      class="MuiTypography-root MuiTypography-body1 css-j1f0n7-MuiTypography-root"
+    >
+      Designer
+    </p>
+  </div>
+</div>
+`;
