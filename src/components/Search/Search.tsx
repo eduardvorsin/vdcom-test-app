@@ -118,7 +118,7 @@ const Search: React.FC<SearchProps> = ({
     onChange(e);
   };
 
-  const searchSubmitHandler: React.FocusEventHandler<HTMLFormElement> = (e) => {
+  const searchSubmitHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
     const searchFormElements = e.currentTarget.elements as SearchFormElements;
