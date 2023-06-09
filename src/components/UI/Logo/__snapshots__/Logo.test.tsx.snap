@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo tests is a basic snapshot 1`] = `
+<a
+  class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways logo css-h74647-MuiTypography-root-MuiLink-root"
+  data-testid="logo-link"
+  href="/contacts"
+>
+  <img
+    alt="logo"
+    class="css-12pywbb"
+    src="assets"
+  />
+</a>
+`;
