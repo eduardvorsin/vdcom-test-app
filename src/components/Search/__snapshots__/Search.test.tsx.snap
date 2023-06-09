@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Tests is a basic snapshot 1`] = `
+<form
+  class="css-8atqhb"
+  data-testid="search-form"
+  novalidate=""
+>
+  <div
+    class="MuiBox-root css-19sk4h4"
+    role="search"
+  >
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-13pwdle-MuiButtonBase-root-MuiIconButton-root"
+      tabindex="0"
+      type="submit"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="SearchIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+        />
+      </svg>
+    </button>
+    <label
+      class="css-inngth"
+      for="search"
+    >
+      Search about documents
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary css-15tv2wk-MuiInputBase-root-MuiInput-root"
+      required=""
+    >
+      <input
+        aria-describedby="search-helper-text"
+        aria-invalid="false"
+        class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+        id="search"
+        name="search"
+        placeholder="Search by Name..."
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</form>
+`;
+
+exports[`Search Tests is a snapshot with an error 1`] = `
+<form
+  class="css-8atqhb"
+  data-testid="search-form"
+  novalidate=""
+>
+  <div
+    class="MuiBox-root css-19sk4h4"
+    role="search"
+  >
+    <button
+      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-13pwdle-MuiButtonBase-root-MuiIconButton-root"
+      tabindex="0"
+      type="submit"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="SearchIcon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+        />
+      </svg>
+    </button>
+    <label
+      class="css-inngth"
+      for="search"
+    >
+      Search about documents
+    </label>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary Mui-error Mui-focused css-15tv2wk-MuiInputBase-root-MuiInput-root"
+      required=""
+    >
+      <input
+        aria-describedby="search-helper-text"
+        aria-invalid="true"
+        class="MuiInputBase-input MuiInput-input error css-1x51dt5-MuiInputBase-input-MuiInput-input"
+        id="search"
+        name="search"
+        placeholder="Search by Name..."
+        required=""
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <p
+    class="MuiFormHelperText-root Mui-error css-1nhp958-MuiFormHelperText-root"
+    id="search-helper-text"
+  >
+    before sending, you need to fill in the search field
+  </p>
+</form>
+`;
