@@ -103,7 +103,7 @@ const Profile: React.FC<ProfileProps> = ({
   const [open, setOpen] = useState<boolean>(!isMobileWidth);
   const menuRef = useRef<HTMLDivElement>();
 
-  const clickHander: React.MouseEventHandler<HTMLImageElement> = (e) => {
+  const clickHander: React.MouseEventHandler<HTMLImageElement> = () => {
     if (isMobileWidth) {
       setOpen((prevState) => !prevState);
     }
