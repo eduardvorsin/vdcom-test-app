@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import { Form } from 'react-router-dom';
 import { UserWithoutToken } from '../../../models/IUser';
-import { getCurrentValidationMessage, isEmpty } from '../../../helpers/validation';
+import { getCurrentValidationMessage, isEmpty } from '../../../utils/validation/validation';
 
 const LoginFormInner = styled(Box)(() => ({
   display: 'grid',
