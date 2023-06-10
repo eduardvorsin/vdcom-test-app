@@ -21,13 +21,13 @@ const ContactsHeader = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   marginBottom: '0px',
   flexWrap: 'wrap',
-  '& > :first-child, & > :last-child': {
+  '& > :first-of-type, & > :last-of-type': {
     marginBottom: '20px',
   },
   [theme.breakpoints.up('sm')]: {
     flexWrap: 'no-wrap',
     marginBottom: '30px',
-    '& > :first-child, & > :last-child': {
+    '& > :first-of-type, & > :last-of-type': {
       marginBottom: '0px',
     },
   },
