@@ -19,7 +19,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Form, useSubmit } from 'react-router-dom';
 import { SortOrder, sortContactsBy } from '../../utils/helpers/helpers';
 import { IContact } from '../../models/IContact';
-import { visuallyHiddenStyles } from '../../App';
+import visuallyHiddenStyles from '../sharedStyles';
 
 const StyledTable = styled(Table)(({ theme }) => ({
   borderCollapse: 'separate',
