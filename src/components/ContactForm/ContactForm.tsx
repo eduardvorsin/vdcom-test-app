@@ -138,7 +138,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
           helperText={formErrorState.clientName}
           onChange={changeHandler}
           name='clientName'
-          label='Client name'
+          label='Client Name'
         />
         <StyledTextField
           value={formState['TRN/PPSN']}
