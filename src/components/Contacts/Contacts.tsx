@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Alert,
@@ -12,7 +12,7 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import ContactDialog from '../ContactDialog/ContactDialog';
 import useAppSelector from '../../hooks/useAppSelector/useAppSelector';
-import ContactsTable from '../ContactsTable/ContactsTable';
+import { MemoContactsTable } from '../ContactsTable/ContactsTable';
 import Spinner from '../UI/Spinner/Spinner';
 
 const ContactsHeader = styled(Box)(({ theme }) => ({
@@ -50,19 +50,11 @@ const Contacts = () => {
 
   const handleAddContactOpen = () => setAddContactModalOpen(true);
   const handleAddContactClose = () => setAddContactModalOpen(false);
-  const handleUpdateContactOpen = (id: number) => {
+  const handleUpdateContactOpen = useCallback((id: number) => {
     navigate(`/contacts/${id}`);
     setUpdateContactModalOpen(true);
-  };
+  }, []);
   const handleUpdateContactClose = () => setUpdateContactModalOpen(false);
-
-  const MemoContactsTable = useMemo(() => (
-    <ContactsTable
-      rows={data}
-      onDelete={() => { }}
-      onEdit={handleUpdateContactOpen}
-    />
-  ), [data]);
 
   return (
     <Box
@@ -117,9 +109,10 @@ const Contacts = () => {
         )}
 
         {status === 'resolved' && (
-          <>
-            {MemoContactsTable}
-          </>
+          <MemoContactsTable
+            rows={data}
+            onEdit={handleUpdateContactOpen}
+          />
         )}
       </Box>
 
