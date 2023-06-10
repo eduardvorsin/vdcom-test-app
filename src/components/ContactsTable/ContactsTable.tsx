@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import {
   Table,
   TableRow,
@@ -323,4 +323,5 @@ const ContactsTable: React.FC<ContactsTableProps> = ({
   );
 };
 
+export const MemoContactsTable = memo(ContactsTable);
 export default ContactsTable;
