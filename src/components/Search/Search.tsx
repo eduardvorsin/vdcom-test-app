@@ -9,8 +9,8 @@ import {
   Theme,
   styled,
 } from '@mui/material';
-import { visuallyHiddenStyles } from '../../App';
 import { isEmpty } from '../../utils/validation/validation';
+import visuallyHiddenStyles from '../sharedStyles';
 
 const SearchForm = styled('form')(() => ({
   width: '100%',
