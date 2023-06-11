@@ -20,7 +20,7 @@ const Login = () => {
               mb: '30px',
             }}
           >
-            <AlertTitle>Ошибка</AlertTitle>
+            <AlertTitle>Error</AlertTitle>
             {error.message}
           </Alert>
         </Fade>
