@@ -69,7 +69,7 @@ describe('ContactsForm tests', () => {
       await user.click(screen.getByRole<HTMLButtonElement>('button', { name: /To accept/i }));
     });
 
-    expect(screen.getAllByText<HTMLParagraphElement>('This field is mandatory')[0]).toBeInTheDocument();
+    expect(screen.getAllByText<HTMLParagraphElement>('This field is mandatory')).toHaveLength(8);
   });
 
   it('should show the message "the entered value must match the following pattern example@email.com" if the email field is filled in incorrectly', async () => {
