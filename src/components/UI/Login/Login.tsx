@@ -1,6 +1,6 @@
 import React from 'react';
 import { useActionData } from 'react-router-dom';
-import { Fade, AlertTitle, Alert } from '@mui/material';
+import { Fade, AlertTitle, Alert, Box } from '@mui/material';
 import LoginForm from '../LoginForm/LoginForm';
 
 const Login = () => {
