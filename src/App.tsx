@@ -200,17 +200,8 @@ theme = createTheme(theme, {
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
-          overflowWrap: 'break-word',
-        }}
-      >
-        <CssBaseline enableColorScheme />
-        <AppRouter />
-      </Box>
+      <CssBaseline enableColorScheme />
+      <AppRouter />
     </ThemeProvider>
   );
 }
