@@ -10,7 +10,7 @@ type ContactDialogProps = {
   title: string,
   open: boolean,
   actionType: 'add' | 'change',
-  onClose: (event: object, reason: string) => void,
+  onClose: (event: React.SyntheticEvent, reason: string) => void,
 }
 
 const ContactDialog: React.FC<ContactDialogProps> = ({
