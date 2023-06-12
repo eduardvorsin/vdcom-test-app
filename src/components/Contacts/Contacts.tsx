@@ -37,8 +37,8 @@ const ContactsHeader = styled(Box)(({ theme }) => ({
 }));
 
 const Contacts = () => {
-  const [addContactModalOpen, setAddContactModalOpen] = useState(false);
-  const [updateContactModalOpen, setUpdateContactModalOpen] = useState(false);
+  const [addContactModalOpen, setAddContactModalOpen] = useState<boolean>(false);
+  const [updateContactModalOpen, setUpdateContactModalOpen] = useState<boolean>(false);
 
   const {
     data,
