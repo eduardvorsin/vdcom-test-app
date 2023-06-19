@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 
 import userEvent from '@testing-library/user-event';
@@ -45,7 +45,9 @@ describe('Header integration tests', () => {
     const user = userEvent.setup();
     render(<RouterProvider router={router} />);
 
-    user.type(screen.getByRole<HTMLInputElement>('textbox'), 'contacts');
+    act(() => {
+      user.type(screen.getByRole<HTMLInputElement>('textbox'), 'contacts');
+    });
 
     await waitFor(() => {
       expect(screen.getByRole<HTMLInputElement>('textbox')).toHaveValue('contacts');
