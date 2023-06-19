@@ -50,10 +50,11 @@ exports[`Header tests is a basic snapshot 1`] = `
         role="search"
       >
         <button
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-13pwdle-MuiButtonBase-root-MuiIconButton-root"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-123v15u-MuiButtonBase-root-MuiIconButton-root"
           tabindex="0"
           type="submit"
         >
+          search
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
