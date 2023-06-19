@@ -19,7 +19,7 @@ const initialState: ContactState = {
 };
 
 const contactSlice = createSlice({
-  name: 'contacts',
+  name: 'contact',
   initialState,
   reducers: {
     removeContact(state, action: PayloadAction<{ id: number }>) {
