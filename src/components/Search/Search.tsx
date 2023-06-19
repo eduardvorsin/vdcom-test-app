@@ -27,6 +27,7 @@ const SearchButton = styled(IconButton)(({ theme }) => ({
   left: '16px',
   transform: 'translateY(-50%)',
   padding: '0px',
+  fontSize: '0px',
   svg: {
     width: '20px',
     height: '20px',
