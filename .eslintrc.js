@@ -12,6 +12,8 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended',
+    'plugin:testing-library/react',
+    'plugin:jest-dom/recommended',
   ],
 
   parserOptions: {
@@ -36,7 +38,20 @@ module.exports = {
       ts: 'never',
       jsx: 'never',
       tsx: 'never'
-    }]
+    }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "test.{js,jsx,ts,tsx}",
+          "test-*.{js,jsx,ts,tsx}",
+          "**/*{.,_}{test,spec}.{js,jsx,ts,tsx}",
+          "**/jest.config.js",
+          "**/jest.setup.js"
+        ],
+        "optionalDependencies": false
+      }
+    ]
   },
   ignorePatterns: ['webpack.config.js', '.eslintrc.js', 'jest.config.js', 'setup-jest.js', 'tsconfig.json', 'babel.config.json', '.stylelintrc.json'],
 
