@@ -6,7 +6,7 @@ import addMemoryRouter from '../../../tests/helpers/addMemoryRouter';
 
 describe('HomePage tests', () => {
   it('renders correctly', async () => {
-    render(wrapWithRedux(addMemoryRouter(), {}));
+    render(wrapWithRedux(addMemoryRouter({ initialEntries: ['/'] }), {}));
 
     await waitFor(() => {
       expect(screen.getByRole<HTMLElement>('banner')).toBeInTheDocument();
@@ -22,14 +22,14 @@ describe('HomePage tests', () => {
   });
 
   it('is a basic snapshot', async () => {
-    render(wrapWithRedux(addMemoryRouter(), {}));
+    render(wrapWithRedux(addMemoryRouter({ initialEntries: ['/'] }), {}));
 
     expect(await screen.findByTestId<HTMLDivElement>('home-page')).toMatchSnapshot();
   });
 
   it('is a snapshot with a screen width greater than 900px', async () => {
     jest.spyOn(window.screen, 'width', 'get').mockReturnValue(1000);
-    render(wrapWithRedux(addMemoryRouter(), {}));
+    render(wrapWithRedux(addMemoryRouter({ initialEntries: ['/'] }), {}));
 
     expect(await screen.findByTestId<HTMLDivElement>('home-page')).toMatchSnapshot();
   });
