@@ -20,7 +20,7 @@ import { isAuth } from '../../utils/authorization/authorization';
 export type ContactsDeletePathName = '/contacts/:clientId/delete';
 export type ContactsChangePathName = '/contacts/:clientId/change';
 
-export const basename = process.env.NODE_ENV === 'development' ? '' : '/vdcom-test-app';
+export const basename = process.env.NODE_ENV === 'production' ? '/vdcom-test-app' : '';
 
 export const routes = [
   {
