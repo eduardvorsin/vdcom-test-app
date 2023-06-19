@@ -78,7 +78,7 @@ describe('Search Tests', () => {
       />,
     );
 
-    user.click(screen.getByRole<HTMLButtonElement>('button'));
+    user.click(await screen.findByRole<HTMLButtonElement>('button'));
 
     await screen.findByText<HTMLParagraphElement>('before sending, you need to fill in the search field');
 
