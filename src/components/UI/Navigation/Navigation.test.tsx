@@ -7,7 +7,6 @@ import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import Navigation from './Navigation';
 import wrapWithRedux from '../../../tests/helpers/wrapWithRedux';
 import addMemoryRouter from '../../../tests/helpers/addMemoryRouter';
-import server from '../../../tests/msw/server';
 
 describe('Navigation tests', () => {
   it('renders correctly', () => {
@@ -266,15 +265,6 @@ describe('Navigation tests', () => {
 });
 
 describe('Navigation integration tests', () => {
-  beforeAll(() => {
-    server.listen({ onUnhandledRequest: 'error' });
-  });
-  afterEach(() => {
-    server.resetHandlers();
-  });
-  afterAll(() => {
-    server.close();
-  });
 
   it('should go to the login page when clicking on the logout button', async () => {
     jest.spyOn(window.screen, 'width', 'get').mockReturnValue(1024);
