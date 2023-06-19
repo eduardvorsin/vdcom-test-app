@@ -77,8 +77,8 @@ const LoginButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-// eslint-disable-next-line max-len
-type LoginFormElements = HTMLFormControlsCollection & Record<keyof UserWithoutToken, HTMLInputElement>;
+type LoginFormElements = HTMLFormControlsCollection &
+  Record<keyof UserWithoutToken, HTMLInputElement>;
 
 const LoginForm = () => {
   const [username, setUsername] = useState<string>('');

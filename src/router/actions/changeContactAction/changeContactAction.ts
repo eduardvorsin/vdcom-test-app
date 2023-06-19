@@ -11,9 +11,8 @@ interface changeContactActionArgs extends ActionFunctionArgs {
   params: Params<ParamParseKey<ContactsChangePathName>>,
   request: Request,
 }
-
-// eslint-disable-next-line max-len
-const changeContactAction = async ({ params, request }: changeContactActionArgs): Promise<Response> => {
+const changeContactAction = async ({ params, request }: changeContactActionArgs):
+  Promise<Response> => {
   const contactFormData = await request.formData();
 
   const contactData = {

@@ -9,8 +9,8 @@ import { Form, useSubmit } from 'react-router-dom';
 import { ContactWithoutId } from '../../models/IContact';
 import { getCurrentValidationMessage, isEmpty } from '../../utils/validation/validation';
 
-// eslint-disable-next-line max-len
-type ContactFormElements = HTMLFormControlsCollection & Record<keyof ContactWithoutId, HTMLInputElement>;
+type ContactFormElements = HTMLFormControlsCollection &
+  Record<keyof ContactWithoutId, HTMLInputElement>;
 
 type ContactWithoutIdFormState = Record<keyof ContactWithoutId, string>;
 type ContactFormProps = {

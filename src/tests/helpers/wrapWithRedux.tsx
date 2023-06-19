@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import { PreloadedState } from '@reduxjs/toolkit';
 import { RootState, setupStore } from '../../store/store';
 
-// eslint-disable-next-line max-len
-const wrapWithRedux = (component: React.ReactElement, initialState: PreloadedState<RootState>): ReturnType<typeof Provider> => {
+const wrapWithRedux = (component: React.ReactElement, initialState: PreloadedState<RootState>):
+  ReturnType<typeof Provider> => {
   const store = setupStore(initialState);
 
   return (
