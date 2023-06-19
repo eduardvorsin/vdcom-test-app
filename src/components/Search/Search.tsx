@@ -147,6 +147,7 @@ const Search: React.FC<SearchProps> = ({
           type='submit'
           disableRipple
         >
+          search
           <SearchIcon />
         </SearchButton>
         <SearchLabel
